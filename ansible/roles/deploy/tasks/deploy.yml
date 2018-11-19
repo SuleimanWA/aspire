@@ -1,0 +1,25 @@
+---
+- name: create container
+  docker_container:
+    name: "{{ component_id }}-{{ nodejs_port }}"
+    docker_host: "{{ docker_url }}"
+    image: "{{ image_name }}:{{ image_tag }}"
+    hostname: "{{ ansible_host }}-{{ component_id }}"
+    log_driver: json-file
+    restart_policy: always
+    stop_timeout: "{{ stop_container_timeout }}"
+    keep_volumes: false
+    state: started
+#    restart: "on condition"
+    volumes:
+      - "{{ nodejs_base_path }}:{{ base_dir }}"
+    published_ports:
+      - "{{ nodejs_port }}:{{ nodejs_port }}"
+#    env:
+#      PORT: "{{ nodejs_port }}"
+#      HOSTNAME: "{{ ansible_host }}"
+
+
+- name: "Deployment message"
+  debug:
+    msg: "Deployment for {{ component_id }} is completed"

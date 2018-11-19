@@ -1,0 +1,7 @@
+---
+- name: Validate service is up (TCP Check)
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: "{{ nodejs_port }}"
+    timeout: 60
+    state: started

@@ -1,0 +1,9 @@
+---
+- name: Creates nodejs directory
+  file: path={{ nodejs_base_path }} state=directory mode=775
+
+- name: Creates logs directory
+  file: path={{ nodejs_logs_dir }} state=directory mode=2777
+
+- name: Creates app directory
+  file: path={{ nodejs_app_dir }} state=directory mode=2777

@@ -1,0 +1,24 @@
+
+
+
+docker_url: "unix:///var/run/docker.sock"
+
+# docker stop timeout used in deploy stop and remove playbooks
+stop_container_timeout: 60
+component_id: nodejs
+nodejs_port: 3000
+
+# dirs
+servers_dir: "{{ ansible_env.HOME }}"
+nodejs_base_path: "{{ servers_dir }}/nodejs"
+nodejs_app_dir: "{{ nodejs_base_path }}/app"
+nodejs_logs_dir: "{{ nodejs_base_path }}/logs"
+
+base_dir: /usr/src/app
+work_dir: "{{ base_dir }}/nodejs"
+
+# NodeJS docker image
+image_name: node
+image_tag: alpine
+
+
