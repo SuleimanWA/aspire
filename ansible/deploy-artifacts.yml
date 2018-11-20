@@ -1,16 +1,16 @@
 ---
 - name: pull artifacts from jenkins"
   hosts: "{{ubuntu-server}}"
-  user: "{{user}}"
+#  user: "{{user}}"
   tasks:   
     - name: Copy the file from jenkins to ubunut
       tags: sync-pull
       synchronize:
         src: "{{ item }}"
-        dest: "/opt/data/app.jar"
+        dest: "{{dest_deploy}}"
         mode: pull
       delegate_to: "{{jenkins-server}}"
       register: syncfile
       run_once: true
       with_items:
-       - "/var/lib/jenkins/app.jar"
+       - "{{src_jenkins}}"

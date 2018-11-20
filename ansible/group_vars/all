@@ -22,3 +22,14 @@ image_name: node
 image_tag: alpine
 
 
+
+
+
+
+
+############################## jenkins and deploy artifacts ##############################
+ubuntu-server: ubuntu
+jenkins-server: jenkins
+
+src_jenkins: /var/lib/jenkins/app.jar
+dest_deploy: /opt/data/app.jar
